@@ -43,9 +43,9 @@ public class TypeConverter implements Serializable {
     private static final String MAX_LONG_STR = String.valueOf(Long.MAX_VALUE);
 
     public static Collection getArray(final Object value) throws IllegalArgumentException {
-        Objects.requireNonNull(value, "value can't be null");
-
-        if (Collection.class.isAssignableFrom(value.getClass())) {
+        if(value == null) {
+            return null;
+        }else if (Collection.class.isAssignableFrom(value.getClass())) {
             return (Collection<?>) value;
         } else if (value instanceof Object[]) {
             return Arrays.asList((Object[]) value);

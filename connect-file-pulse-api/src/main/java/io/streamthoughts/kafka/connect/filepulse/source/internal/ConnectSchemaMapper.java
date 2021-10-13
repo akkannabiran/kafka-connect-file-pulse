@@ -216,6 +216,7 @@ public class ConnectSchemaMapper implements SchemaMapper<Schema>, SchemaMapperWi
             final Schema connectFieldSchema = connectField.schema();
 
             final Schema.Type dataSchemaType = typed.type().schemaType();
+            if(dataSchemaType == null) continue;
             final Schema.Type schemaType = connectFieldSchema.type();
 
             if (schemaType != dataSchemaType) {
@@ -282,7 +283,7 @@ public class ConnectSchemaMapper implements SchemaMapper<Schema>, SchemaMapperWi
                     );
         }
 
-        if (schema.type() == Schema.Type.ARRAY) {
+        if (schema.type() == Schema.Type.ARRAY && typed.getArray() != null) {
             final Schema connectValueSchema = schema.valueSchema();
 
             final io.streamthoughts.kafka.connect.filepulse.data.Schema valueSchema =

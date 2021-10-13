@@ -159,6 +159,7 @@
                         <id>validate</id>
                         <phase>validate</phase>
                         <configuration>
+                            <skip>true</skip>
                             <propertyExpansion>basedir=${checkstyle.config.location}</propertyExpansion>
                             <configLocation>checkstyle/checkstyle.xml</configLocation>
                             <encoding>UTF-8</encoding>
